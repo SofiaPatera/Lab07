@@ -18,7 +18,12 @@ class Controller:
         self.epoca_selezionata = None
 
     # POPOLA DROPDOWN
-    # TODO
+    def popola_musei(self):
+        lista_musei = self._model.get_musei()
+        for musei in lista_musei:
+            self.view._dd_museo.options.append(ft.dropdown.Options(musei.nome))
+
+        self.view.update()
 
     # CALLBACKS DROPDOWN
     # TODO

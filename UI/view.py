@@ -1,5 +1,6 @@
 import flet as ft
 from UI.alert import AlertManager
+from model.model import Model
 
 '''
     VIEW:
@@ -36,7 +37,8 @@ class View:
         self.txt_titolo = ft.Text(value="Musei di Torino", size=38, weight=ft.FontWeight.BOLD)
 
         # --- Sezione 2: Filtraggio ---
-        # TODO
+        self._dd_museo = ft.Dropdown(label = "Museo",
+                                     options = [ft.dropdown.Option(Model.get_musei())])
 
         # Sezione 3: Artefatti
         # TODO

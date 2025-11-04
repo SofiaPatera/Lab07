@@ -20,10 +20,18 @@ class Model:
 
     def get_epoche(self):
         """Restituisce la lista di tutte le epoche."""
-        # TODO
+        lista_epoche = []
+        for art in self._artefatto_dao.read_artefatti():
+            lista_epoche.append(art.epoca)
+        return lista_epoche
 
     # --- MUSEI ---
     def get_musei(self):
         """ Restituisce la lista di tutti i musei."""
-        # TODO
+        if len(self._museo_dao.read_museo()) == 0:
+            self._museo_dao = MuseoDAO.read_museo()
+        else:
+            print("No need to read again from database using SQL query")
+        return self._museo_dao
+
 
