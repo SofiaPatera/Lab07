@@ -30,7 +30,6 @@ class Model:
 
         return lista_artefatti
 
-
     def get_epoche(self):
         """Restituisce la lista di tutte le epoche."""
         lista_epoche = []
@@ -47,5 +46,3 @@ class Model:
         #else:
         #   print("No need to read again from database using SQL query")
         return self._museo_dao.read_museo()
-
-

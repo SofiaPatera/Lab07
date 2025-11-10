@@ -31,7 +31,6 @@ class Controller:
             self._view._dd_epoca.options.append(ft.dropdown.Option(epoche))
         self._view.update()
 
-
     # CALLBACKS DROPDOWN
     def on_change_musei(self, e):
         self.museo_selezionato = e.control.value
@@ -49,6 +48,3 @@ class Controller:
             for a in lista_artefatti:
                 self._view.lista_artefatti.controls.append(ft.Text(a))
         self._view.update()
-
-
-

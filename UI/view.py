@@ -81,8 +81,6 @@ class View:
         self.page.scroll = "adaptive"
         self.page.update()
 
-
-
     def cambia_tema(self, e):
         """ Cambia tema scuro/chiaro """
         self.page.theme_mode = ft.ThemeMode.DARK if self.toggle_cambia_tema.value else ft.ThemeMode.LIGHT
