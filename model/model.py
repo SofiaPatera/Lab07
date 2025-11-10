@@ -35,7 +35,8 @@ class Model:
         """Restituisce la lista di tutte le epoche."""
         lista_epoche = []
         for art in self._artefatto_dao.read_artefatti():
-            lista_epoche.append(art.epoca)
+            if art.epoca not in lista_epoche:
+                lista_epoche.append(art.epoca)
         return lista_epoche
 
     # --- MUSEI ---
