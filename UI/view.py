@@ -1,6 +1,8 @@
 import flet as ft
+from flet.core.elevated_button import ElevatedButton
+from flet.core.types import MainAxisAlignment
+
 from UI.alert import AlertManager
-from model.model import Model
 
 '''
     VIEW:
@@ -37,11 +39,22 @@ class View:
         self.txt_titolo = ft.Text(value="Musei di Torino", size=38, weight=ft.FontWeight.BOLD)
 
         # --- Sezione 2: Filtraggio ---
+
         self._dd_museo = ft.Dropdown(label = "Museo",
-                                     options = [ft.dropdown.Option(Model.get_musei())])
+                                         options = [],
+                                         on_change = self.controller.on_change_musei,
+                                         width = 200)
+        self.controller.popola_musei()
+
+        self._dd_epoca = ft.Dropdown(label = "Epoca",
+                                     options = [],
+                                     on_change = self.controller.on_change_epoca,
+                                     width = 200)
+        self.controller.popola_epoca()
 
         # Sezione 3: Artefatti
-        # TODO
+        pulsante_mostra_artefatti = ElevatedButton("Mostra Artefatti", on_click=self.controller.mostra_artefatti)
+        self.lista_artefatti = ft.ListView(expand = True, spacing= 5, padding = 10, auto_scroll = True)
 
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
@@ -55,14 +68,20 @@ class View:
             ft.Divider(),
 
             # Sezione 2: Filtraggio
-            # TODO
+            ft.Row([self._dd_museo, self._dd_epoca], alignment= MainAxisAlignment.CENTER),
+            ft.Divider(),
 
             # Sezione 3: Artefatti
-            # TODO
+            ft.Row([pulsante_mostra_artefatti], alignment=MainAxisAlignment.CENTER),
+            self.lista_artefatti,
+            ft.Divider(),
+
         )
 
         self.page.scroll = "adaptive"
         self.page.update()
+
+
 
     def cambia_tema(self, e):
         """ Cambia tema scuro/chiaro """

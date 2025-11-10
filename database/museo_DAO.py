@@ -17,7 +17,7 @@ class MuseoDAO:
         cnx = database.DB_connect.ConnessioneDB.get_connection()
         if cnx is None:
             print("Connection failed")
-            return None
+            return []
         else:
             cursor = cnx.cursor(dictionary=True)
             query = """ SELECT * 
